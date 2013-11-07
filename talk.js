@@ -180,14 +180,12 @@ function talkAboutStructure()
   //console.log(struct);
   //console.log(struct["banana"]);
   
-  
   /*
   struct.innerHTML = 
     "<div id='structbox' "+
       "style='width:500px;height:500px;border:1px solid black;'>"+
     "</div>";
     */
-  
 
   function o(a,b,c) { this.a = a; this.b = b; this.c = c; };
   var dataArr = [
@@ -238,6 +236,31 @@ function talkAboutStructure()
       createWeAreTheWorldCellV2(dataArr[i]));
   }
   */
+
+  function createWeAreTheWorldCellV3(artist)
+  {
+    var cell = document.getElementById('artistcelltemplate').cloneNode(true);
+    cell.id = artist.b;
+    //children[0] = img
+    cell.children[0].id = artist.b+"_mug";
+    cell.children[0].src = artist.mugshot;
+    //children[1] = number
+    cell.children[1].id = artist.b+"_number";
+    cell.children[1].innerHTML = "#"+artist.c;
+    //children[2] = name
+    cell.children[2].id = artist.b+"_name";
+    cell.children[2].innerHTML = artist.a+" "+artist.b;
+
+    return cell;
+  }
+
+/*
+  for(var i in dataArr)
+  {
+    document.getElementById('structbox').appendChild( 
+      createWeAreTheWorldCellV3(dataArr[i]));
+  }
+  */
 }
 
 
@@ -260,4 +283,3 @@ function printStuffIveWorkedOn()
   }
 }
 window.addEventListener('load', function() { printStuffIveWorkedOn(); });
-//ps- plz don't actually run this code
