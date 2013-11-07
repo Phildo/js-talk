@@ -1,6 +1,6 @@
 /*
-* Javascript
-* A thing where phil talks about it
+* "Why I'm bad at Javascript"
+* -A thing where phil talks about that
 */
 
 var dude = {
@@ -51,7 +51,6 @@ function talkAboutObjects()
   //alert(obj.anotherkey);
 
   obj["onemorekey"] = "onemorevalue "+obj.anotherkey;
-  //alert(obj.onemorekey);
   //alert(obj.onemoerkey);
 
   var hash = {};
@@ -77,8 +76,8 @@ function talkAboutObjects()
     });
   puppies.push(
     {
-      "naem"  :"abe stinkoln",
-      "weight":"4 score and 20",//yes I know this is a non general unit lay off me
+      "naem"  :"abraham stinkin",
+      "weight":"4 score and 20",//yes I know 'score' is a non general unit lay off me
       "legs"  :4
     });
 
@@ -95,10 +94,10 @@ function talkAboutObjects()
     this.name = name;
     this.weight = weight;
   }
-  puppies.push(Puppy("Goku",9001));
+  //puppies.push(Puppy("Goku",9001));
   //console.log(puppies);
 
-  puppies.push(new Puppy("foo","bar"));
+  //puppies.push(new Puppy("foo","bar"));
   //console.log(puppies);
 
   var Puppy2 = function(name, weight)
@@ -113,7 +112,7 @@ function talkAboutObjects()
 
   var dancer = new Puppy2("man",0);
   dancer.dance();
-  puppies.push(dancer);
+  //puppies.push(dancer);
   //console.log(puppies);
 
   var Puppy3 = function(name)
@@ -132,13 +131,13 @@ function talkAboutObjects()
 
   var dog = new Puppy3("dog");
   dog.capitalizeName();
-  puppies.push(dog);
+  //puppies.push(dog);
   //console.log(puppies);
 
   setTimeout(dog.lowercaseName,                    1000);
   //setTimeout(function() { console.log(puppies); }, 2000);
 
-  //console.log(window);;
+  //console.log(window);
 
   var Puppy4 = function(name)
   {
@@ -164,6 +163,83 @@ function talkAboutObjects()
 
   //PhilQuickTip(TM) - Object creation is SLOW!!!! See http://phildogames.com/misc/js-linked-list/benchmark.html
 }
+
+
+
+
+
+
+
+
+function talkAboutStructure()
+{
+  var struct = document.getElementById('structure');
+  //console.log(struct);
+
+  struct.banana = "test";
+  //console.log(struct);
+  //console.log(struct["banana"]);
+  
+  
+  /*
+  struct.innerHTML = 
+    "<div id='structbox' "+
+      "style='width:500px;height:500px;border:1px solid black;'>"+
+    "</div>";
+    */
+  
+
+  function o(a,b,c) { this.a = a; this.b = b; this.c = c; };
+  var dataArr = [
+    new o("michael","jackson",1),
+    new o("lionel","richie",2),
+    new o("stevie","wonder",3),
+    new o("whitney","houston",4),
+    new o("huey","lewis",5),
+    new o("the","boss",6)
+    ];
+
+  function createWeAreTheWorldCell(artist)
+  {
+    var cell = 
+      "<div id='"+artist.b+"' class='artist'>"+
+        "#"+artist.c+" - "+artist.a+" "+artist.b+
+      "</div>";
+    return cell;
+  }
+
+  for(var i in dataArr)
+  {
+    //document.getElementById('structbox').innerHTML += 
+      //createWeAreTheWorldCell(dataArr[i]);
+  }
+
+  function createWeAreTheWorldCellV2(artist)
+  {
+    var cell = document.createElement('div');
+    cell.id = artist.b;
+    cell.class = 'artist';
+    cell.innerHTML = "#"+artist.c+" - "+artist.a+" "+artist.b;
+
+    var img = document.createElement('img');
+    //equivalent to...
+    //var img = new Image();
+    img.src = artist.mugshot;
+
+    cell.appendChild(img);
+
+    return cell;
+  }
+
+  /*
+  for(var i in dataArr)
+  {
+    document.getElementById('structbox').appendChild( 
+      createWeAreTheWorldCellV2(dataArr[i]));
+  }
+  */
+}
+
 
 
 
